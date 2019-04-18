@@ -88,7 +88,7 @@ static THD_FUNCTION(flash_integrity_check_thread, arg) {
 			NVIC_SystemReset();
 		}
 
-		chThdSleepMilliseconds(50);
+		chThdSleepMilliseconds(5);
 	}
 }
 

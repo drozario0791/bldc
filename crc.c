@@ -83,5 +83,5 @@ uint32_t crc32(uint32_t *pBuffer, uint32_t BufferLength) {
   */
 void crc32_reset(void) {
   /* Reset CRC generator */
-  CRC->CR = CRC_CR_RESET;
+  CRC->CR |= CRC_CR_RESET;
 }

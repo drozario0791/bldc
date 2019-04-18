@@ -285,7 +285,7 @@ uint32_t flash_helper_verify_flash_memory(void) {
 
 uint32_t flash_helper_verify_flash_memory_chunk(void) {
 	static uint32_t index = 0;
-	const uint32_t chunk_size = 8192;
+	const uint32_t chunk_size = 1024;
 	uint32_t res = FAULT_CODE_NONE;
 	uint32_t crc = 0;
 
@@ -295,7 +295,7 @@ uint32_t flash_helper_verify_flash_memory_chunk(void) {
 	}
 
 	if (index < VECTOR_TABLE_SIZE) {
-		crc32((VECTOR_TABLE_ADDRESS + index), chunk_size/4);
+		crc32((uint32_t*)((uint32_t)VECTOR_TABLE_ADDRESS + index), chunk_size/4);
 	}
 	else {
 		crc = crc32((uint32_t*)((uint32_t)APP_START_ADDRESS + index - VECTOR_TABLE_SIZE), chunk_size/4);
